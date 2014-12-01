@@ -1,0 +1,37 @@
+<h1>Add A New Project</h1>
+
+<br>
+
+<%= form_for @project do |f| %>
+<div class="main-form">
+	<div>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</div>
+
+	<div>
+		<%= f.label :description %>
+		<%= f.text_field :description %>
+	</div>
+</div>	
+
+<div class="rewards">
+	<p>Rewards</p>
+	
+		<%= f.fields_for :rewards do |reward_fields| %>
+
+			<%= render 'reward_fields', f: reward_fields %>
+
+		<%end%>
+ 
+
+		<%= link_to_add_association 'add reward', f, :rewards %>
+</div>
+	<%= f.submit %>
+
+<%end%>
+
+<br>
+<br>
+
+<%= link_to "Back to Projects", projects_url %>
