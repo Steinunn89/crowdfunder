@@ -16,7 +16,7 @@
 	</div>
 </div>	
 
-<div class="rewards">
+<div id="rewards">
 	<p>Rewards</p>
 	
 	<%= f.fields_for :rewards do |reward_fields| %>
@@ -24,8 +24,9 @@
 		<%= render 'reward_fields', f: reward_fields %>
 	<%end%>
  
-
-	<%= link_to_add_association 'add reward', f, :rewards %>
+	<div class="links">
+		<%= link_to_add_association 'add reward', f, :rewards %>
+	</div>
 </div>
 	<%= f.submit %>
 
