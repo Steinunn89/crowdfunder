@@ -3,6 +3,7 @@
 <br>
 
 <%= form_for @project do |f| %>
+
 <div class="main-form">
 	<div>
 		<%= f.label :name %>
@@ -18,14 +19,13 @@
 <div class="rewards">
 	<p>Rewards</p>
 	
-		<%= f.fields_for :rewards do |reward_fields| %>
+	<%= f.fields_for :rewards do |reward_fields| %>
 
-			<%= render 'reward_fields', f: reward_fields %>
-
-		<%end%>
+		<%= render 'reward_fields', f: reward_fields %>
+	<%end%>
  
 
-		<%= link_to_add_association 'add reward', f, :rewards %>
+	<%= link_to_add_association 'add reward', f, :rewards %>
 </div>
 	<%= f.submit %>
 

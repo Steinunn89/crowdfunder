@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20141201191356) do
   create_table "rewards", force: true do |t|
     t.integer  "amount"
     t.text     "description"
+    t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
