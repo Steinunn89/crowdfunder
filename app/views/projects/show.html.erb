@@ -6,7 +6,7 @@
 <h3>Rewards</h3>
 
 <% @project.rewards.each do |reward|%>
-	<%= link_to reward_path do %>
+	<%= link_to new_pledge_path do %>
   	<h2> 
   	<%= reward.amount %> 
   	<%= reward.description %>

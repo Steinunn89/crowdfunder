@@ -6,4 +6,10 @@ class User < ActiveRecord::Base
 
   validates :email, uniqueness: true
 
+  #has_many :owned_project, class_name:"Project" 
+  
+  has_many :pledges
+  has_many :rewards, through: :pledges
+  has_many :projects, through: :pledges
+
 end
