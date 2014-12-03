@@ -11,7 +11,7 @@ class PledgesController < ApplicationController
 		
 		if @pledge.save
 
-			redirect_to projects_path
+			redirect_to projects_path, notice: 'Pledge Succesful!'
 			
 		else
 			render :new
