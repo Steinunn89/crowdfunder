@@ -1,21 +1,29 @@
 class PledgesController < ApplicationController
-def new
-	@pledge = Pledge.new
-end
+	before_filter :load_project
 
-def create
-	@pledge = pledge.new(pledge_params)
-	
-	if @pledge.save
-
-		redirect_to pledges_url
-		
-	else
-		render :new
+	def new
+		@pledge = Pledge.new(amount: params[:amount])
+		@reward = @project.match_reward(@pledge.amount)
 	end
-end
-def show
-	@pledge = Pledge.find(params[:id])
-end
+
+	def create
+		@pledge = @project.pledges.build(pledge_params)
+		
+		if @pledge.save
+
+			redirect_to projects_path
+			
+		else
+			render :new
+		end
+	end
+	def show
+		@pledge = Pledge.find(params[:id])
+	end
+
+	def load_project
+		@project = Project.find(params[:project_id])	
+	end
+
 
 end
