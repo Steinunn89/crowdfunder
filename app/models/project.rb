@@ -5,4 +5,10 @@ class Project < ActiveRecord::Base
 	has_many :pledges
 	
 	accepts_nested_attributes_for :rewards, reject_if: :all_blank, allow_destroy: true
+	
+	def match_reward(amount)
+		rewards.where(['amount <= ?', amount]).order('amount desc').first
+	end
+
+
 end
