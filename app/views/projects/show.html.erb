@@ -2,7 +2,10 @@
 <h2>Backers:<%= @project.pledges.length %> </h2>
 
 	<br>
-	<p><%= @project.description %></p>
+	<p>Description:<%= @project.description %></p>
+	<p>Backing Deadline<%= @project.end_date.strftime('%B %e, %Y') %> </p>
+	<p> The goal $ <%= @project.goal %> </p>
+	<p> The amount raised: <%= @project.amount_raised %> </p>
 
 	<h3>Rewards</h3>
 
