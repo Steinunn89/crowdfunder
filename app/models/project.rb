@@ -14,5 +14,9 @@ class Project < ActiveRecord::Base
 		rewards.where(['amount <= ?', amount]).order('amount desc').first
 	end
 
+	def days_left
+		((Time.now - self.end_date)/3600).round
+	end
+
 
 end
