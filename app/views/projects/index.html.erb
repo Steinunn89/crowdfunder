@@ -4,4 +4,6 @@
   <%= render @projects %>
 </div>
 
-<%= link_to "Add A New Project", new_project_url %>
+<% if can?(:create, Project) %>
+	<%=link_to "Add A New Project", new_project_url %>
+<% end %>

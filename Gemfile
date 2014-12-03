@@ -30,6 +30,8 @@ gem 'cocoon'
 gem 'sorcery'
 
 gem 'simple_form'
+
+gem 'cancancan'
 # gem 'better_errors'
 # gem 'binding_of_caller'
 

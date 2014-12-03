@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
 before_action :require_login, except: :index 
-
+load_and_authorize_resource
 def index
 	@projects = Project.all
 end
@@ -26,7 +26,6 @@ end
 def show
 	@project = Project.find(params[:id])
 end
-
 
 private
 
