@@ -1,16 +1,15 @@
 <h1>Make A Pledge</h1>
 
-<%= simple_form_for @pledge do |f| %>
+<%= form_for [@project, @pledge] do |f| %>
 
 <div class="main-form">
 	<div>
-		<%= f.label :amount %>
-		<%= f.association :reward %> 
-		<%= f.text_field :amount, value: @reward.amount %>
+		<%= f.label :amount %> 
+		<%= f.text_field :amount %>
 	</div>
 </div>	
 
-	<%= f.submit %>
+<%= f.submit %>
 <% end %>
 
 <%= link_to "Back to project", projects_path %>

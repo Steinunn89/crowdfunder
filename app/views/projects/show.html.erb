@@ -1,18 +1,18 @@
 <h1><%= @project.name %> </h2>
 
-<br>
-<p><%= @project.description %></p>
+	<br>
+	<p><%= @project.description %></p>
 
-<h3>Rewards</h3>
+	<h3>Rewards</h3>
 
-<% @project.rewards.each do |reward|%>
-	<%= link_to new_pledge_path do %>
-  	<h2> 
-  	<%= reward.amount %> 
-  	<%= reward.description %>
-  	</h2>
-  <% end %>
-<% end %>
+	<% @project.rewards.each do |reward|%>
+		<%= link_to new_project_pledge_path(@project, amount: reward.amount) do %>
+			<h2> 
+				<%= reward.amount %> 
+				<%= reward.description %>
+			</h2>
+		<% end %>
+	<% end %>
 
 
-<%= link_to "Back To Main Page", projects_url %>
+	<%= link_to "Back To Main Page", projects_url %>
