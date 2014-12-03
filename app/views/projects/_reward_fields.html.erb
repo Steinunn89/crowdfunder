@@ -1,7 +1,7 @@
 <div class="nested-fields">
 	<div class="fields">
 		<%= f.label :amount %>
-		<%= f.text_field :amount %>
+		<%= f.number_field :amount, :step => 10 %>
 	</div>
 
 	<div class="fields">
