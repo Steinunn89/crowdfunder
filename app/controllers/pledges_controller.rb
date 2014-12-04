@@ -7,7 +7,10 @@ class PledgesController < ApplicationController
 	end
 
 	def create
+		@reward = @project.select_reward_tier(pledge_params[:amount])
 		@pledge = @project.pledges.build(pledge_params)
+		@pledge.reward_id = @reward.id
+		@pledge.backer_id = current_user.id
 		
 		if @pledge.save
 
