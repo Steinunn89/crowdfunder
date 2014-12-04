@@ -1,8 +1,8 @@
 class Project < ActiveRecord::Base
-	#belongs_to :owner, class_name: 'User'
-	#has_many: backers, through: pledges, class_name: 'User'
+	belongs_to :owner, class_name: 'User'
+	has_many :backers, through: :pledges, class_name: 'User'
 	has_many :rewards
-	has_many :pledges
+	has_many :pledges, through: :rewards
 	
 	accepts_nested_attributes_for :rewards, reject_if: :all_blank, allow_destroy: true
 	
@@ -15,8 +15,15 @@ class Project < ActiveRecord::Base
 	end
 
 	def days_left
-		((Time.now - self.end_date)/3600).round
+		((self.end_date - Time.now)/3600).round
 	end
 
+	def backed_by_user?(current_user)
+		backers.include?(current_user)
+	end
+
+	def select_reward_tier(reward_amount)
+		rewards.where('amount <= ?', reward_amount).order('amount asc').last
+	end
 
 end
