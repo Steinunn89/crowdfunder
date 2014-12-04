@@ -15,7 +15,7 @@ class Project < ActiveRecord::Base
 	end
 
 	def days_left
-		((self.end_date - Time.now)/3600).round
+		"#{((self.end_date.getlocal - Time.now.getlocal)/86400).truncate} D, #{(((self.end_date.getlocal - Time.now.getlocal)/86400).modulo(1)*24).round} H"
 	end
 
 	def backed_by_user?(current_user)
