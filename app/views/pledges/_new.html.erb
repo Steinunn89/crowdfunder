@@ -1,15 +1,13 @@
-<h1>Make A Pledge</h1>
+<h3>Make A Pledge</h3>
 
 <%= form_for [@project, @pledge] do |f| %>
 
 <div class="main-form">
 	<div>
 		<%= f.label :amount %> 
-		<%= f.number_field :amount, :step => 10 %>
+		<%= f.number_field :amount, :step => 10, :min => 10 %>
 	</div>
 </div>	
 
 <%= f.submit %>
 <% end %>
-
-<%= link_to "Back to project", projects_path %>

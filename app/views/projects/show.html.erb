@@ -16,7 +16,7 @@
 	<h3>Rewards</h3>
 
 	<% @project.rewards.each do |reward|%>
-		<%= link_to new_project_pledge_path(@project, amount: reward.amount) do %>
+		<%= link_to new_project_pledge_path(@project, amount: reward.amount), class: "reward" do %>
 			<h2> 
 				<%= reward.amount %> 
 				<%= reward.description %>
@@ -24,5 +24,8 @@
 		<% end %>
 	<% end %>
 
+	<div id='pledge-form' hidden>
+		<%= render 'pledges/new' %>
+	</div>
 
 	<%= link_to "Back To Main Page", projects_url %>
