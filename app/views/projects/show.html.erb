@@ -1,5 +1,5 @@
 <h1><%= @project.name %> </h1>
-<h2>Backers:<%= @project.pledges.length %> </h2>
+<h2 id="backers">Backers:<%= @project.pledges.length %> </h2>
 
 <h4> <% if @project.backers.include?(current_user) %> 
 		<div class="pledgedtrue">You have pledged this project already!</div>
@@ -8,8 +8,8 @@
 
 	<br>
 	<p> Description: <%= @project.description %></p>
-	<p> The goal: $ <%= @project.goal %> </p>
-	<p> The amount raised: <%= @project.amount_raised %> </p>
+	<p> The goal: $<%= @project.goal %> </p>
+	<p id="amount-raised"> The amount raised: $<%= @project.amount_raised %> </p>
 	<p> Backing Deadline: <%= @project.end_date.strftime('%B %e, %Y') %> </p>
 	<p> Days left: <%= @project.days_left%> </p>
 
@@ -24,7 +24,7 @@
 		<% end %>
 	<% end %>
 
-	<div id='pledge-form' hidden>
+	<div id='pledge-form' hidden >
 		<%= render 'pledges/new' %>
 	</div>
 
