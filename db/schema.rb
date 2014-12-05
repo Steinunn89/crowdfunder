@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20141204193428) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "goal"
+    t.integer  "user_id"
     t.integer  "owner_id"
   end
 
