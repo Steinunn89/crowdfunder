@@ -9,16 +9,21 @@ class PledgesController < ApplicationController
 	def create
 		@reward = @project.select_reward_tier(pledge_params[:amount])
 		@pledge = @project.pledges.build(pledge_params)
-		@pledge.reward_id = @reward.id
+		@pledge.reward_id = @reward ? @reward.id : nil
 		@pledge.backer_id = current_user.id
-		
-		if @pledge.save
-
-			redirect_to projects_path, notice: 'Pledge Succesful!'
+		@pledge.save		
+		# if @pledge.save
+		# 	respond_to do |format|
+		# 		format.html {redirect_to projects_path, notice: 'Pledge Succesful!'}
+		# 		format.js
+		# 	end
+		# else
+		# 	respond_to do |format|
+		# 		format.html {render :new}
+		# 		format.js
+		# 	end			
 			
-		else
-			render :new
-		end
+		# end
 	end
 	def show
 		@pledge = Pledge.find(params[:id])
