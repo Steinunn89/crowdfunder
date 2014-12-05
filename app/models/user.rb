@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :rewards, through: :pledges
   has_many :backed_projects, through: :pledges, source: :project
   has_many :owned_projects, class_name: "Project"
-
+  def amount_spent
+  	self.pledges.sum(:amount)
+  end
 end
 
